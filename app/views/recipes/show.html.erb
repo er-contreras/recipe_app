@@ -1,54 +1,66 @@
-<section class='recipe'>
-  <h1>Recipe <%= params[:id] %></h1>
-  <div class="recipe-info">
-    <div>
-      <p>Preparation time: <%= @recipe.preparation_time %> H</p>
-      <p>Cooking time: <%= @recipe.cooking_time %> hours </p>
-      <% if @ispublic  %>
-        <p>Description:  </p> <br>
+<% if can? :read, @recipe%>
+  <div class="major_div">
+    <h1><%= @recipe.name %></h1>
+    <div class="details_major_div">
+      <div class="details_smaller_div">
+        <p>Preparation time: <span><%= @recipe.preparation_time %></span></p>
+        <p>Cooking time: <span><%= @recipe.cooking_time %></span></p>
         <p><%= @recipe.description %></p>
-      <%end%>
+      </div>
+      <% if can? :manage, @recipe%>
+        <div class="public_btn_div">
+          <p>Public:</p>
+          <%= link_to "/recipes/#{@recipe.id}/update_public", method: :post do %>
+            <label class="toggle">
+              <% if @recipe.public %>
+                <input type="checkbox" checked />
+              <% else %>
+                <input type="checkbox" />
+              <% end %>
+              <span class="slider round"></span>
+            </label>
+          <% end %>
+        </div>
+      <% end %>
     </div>
     <div>
-    <% if can? :update, @recipe %>
-      <div class="d-flex flex-column">
-        <%= form_with model: @recipe, url: "/recipes/#{@recipe.id}", method: :put do |f| %>
-          <div class="form-check custom-control-right form-switch form-switch-sm mx-3">
-            <%= f.label :public, 'Public:', class: "h5 form-check-label", for: "flexSwitchCheckDefault" %>
-            <%= f.check_box :public, class: "form-check-input", id: "flexSwitchCheckDefault", onchange: "this.form.submit();" %>
-          </div>
+      <% if user_signed_in? %>
+        <%= link_to "/general_list" do %>
+          <button>Generate shopping list</button>
         <% end %>
-      </div>
-    <% end %>
+      <% end %>
+      <% if can? :manage, @recipe%>
+        <%= link_to new_recipe_food_url(recipe_id: @recipe.id, user_id: current_user.id) do %>
+          <button>Add Ingredient</button>
+        <% end %>
+      <% end %>
     </div>
+    <table>
+      <tr>
+        <th>Food</th>
+        <th>Quantity</th>
+        <th>Value</th>
+        <% if can? :manage, @recipe%>
+          <th>Actions</th>
+        <% end %>
+      </tr>
+      <% @foods.each do |recipe|%>
+        <tr>
+          <th><%= recipe.food.name.capitalize %></th>
+          <th><%= recipe.quantity %> <%= recipe.food.measurement_unit %></th>
+          <th>$<%= recipe.price %></th>
+          <th>
+          <% if can? :manage, @recipe%>
+              <%= link_to edit_recipe_food_url(recipe.id, recipe_id: @recipe.id) do %>
+                <button>Modify</button>
+              <% end %>
+              <%= link_to "/recipe_foods/#{recipe.id}", method: :delete do %>
+                <button>Remove</button>
+              <% end %>
+          <% end %>
+          </th>
+        </tr>
+      <% end %>
+    </table>
   </div>
-
-  <div class="btns-container">
-    <div class="m-4">
-      <%= button_to 'Generate shopping list', '/foods/new', method: :get %>
-    </div>
-    <% if can? :update, @recipe %>
-      <div class="m-4">
-        <%= link_to "Add ingredient", "#{@recipe.id}/recipe_foods/new", class: "btn btn-success" %>
-      </div>
-    <% end %>
-  </div>
-
-  <table class="food-list">
-    <tr>
-      <th>
-        Food
-      </th>
-      <th>
-        Quantity
-      </th>
-      <th>
-        Unit Price
-      </th>
-      <th>
-        Actions
-      </th>
-    </tr>
-    <%= render "shared/food_list.html.erb" %>
-  </table>
-</section>
+<% end %>

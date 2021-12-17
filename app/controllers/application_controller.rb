@@ -1,18 +1,29 @@
 class ApplicationController < ActionController::Base
-  skip_before_action :verify_authenticity_token
-  before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :update_allowed_parameters, if: :devise_controller?
 
   rescue_from CanCan::AccessDenied do |exception|
-    flash[:error] = 'Access denied.'
-    redirect_to root_url, alert: exception.message
+    if user_signed_in?
+      respond_to do |format|
+        format.json { head :forbidden }
+        format.html { redirect_to root_path, alert: exception.message }
+      end
+    else
+      respond_to do |format|
+        format.json { head :forbidden }
+        format.html { redirect_to new_user_session_path, alert: exception.message }
+      end
+    end
   end
 
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_in) { |u| u.permit(:name, :password) }
-    devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:name, :password) }
+  protected
 
-    # devise_parameter_sanitizer.permit(:account_update) do |u|
-    #   u.permit(:name, :email, :bio, :photo, :password, :current_password)
-    # end
+  def update_allowed_parameters
+    devise_parameter_sanitizer.permit(:sign_up) do |u|
+      u.permit(:name, :email, :password)
+    end
+
+    devise_parameter_sanitizer.permit(:account_update) do |u|
+      u.permit(:name, :email, :password, :current_password)
+    end
   end
 end

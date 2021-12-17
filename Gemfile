@@ -3,23 +3,17 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '>= 2.7.2'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
-gem 'bullet'
+# gem 'bullet'
 gem 'cancancan'
 gem 'devise'
 gem 'dotenv-rails', groups: %i[development test]
-gem 'font-awesome-rails'
-gem 'jwt'
-gem 'mailcatcher'
-gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
+gem 'faker'
+# beutifies files
+gem 'htmlbeautifier'
 gem 'rails-controller-testing'
-gem 'rspec-rails', '>= 4.0.1'
-gem 'rswag'
-gem 'rubocop', '>= 1.0', '< 2.0'
-gem 'ruby-growl'
-gem 'slack-notifier'
 gem 'wdm', '>= 0.1.0' if Gem.win_platform?
-gem 'xmpp4r'
+# Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
+gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
 # Use Puma as the app server
@@ -36,6 +30,7 @@ gem 'jbuilder', '~> 2.7'
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+gem 'rubocop', '>= 1.0', '< 2.0'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -46,8 +41,8 @@ gem 'bootsnap', '>= 1.4.4', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
-  gem 'database_cleaner-active_record'
-  gem 'pry-rails'
+  gem 'rspec-rails', '~> 5.0.0'
+  gem 'rswag-specs'
 end
 
 group :development do
@@ -58,17 +53,16 @@ group :development do
   gem 'listen', '~> 3.3'
   gem 'rack-mini-profiler', '~> 2.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'database_cleaner'
   gem 'spring'
 end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 3.26'
+  gem 'database_cleaner'
   gem 'factory_bot_rails', '~> 4.0'
-  gem 'faker'
   gem 'selenium-webdriver'
-  gem 'shoulda', '~> 4.0'
+  gem 'shoulda-matchers', '~> 3.1'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
 end

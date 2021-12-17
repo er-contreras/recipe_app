@@ -1,32 +1,48 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Recipe App
+# Rails Meals
 
-> This projects was built with ruby
+> A website about food recipes.
 
-Additional description about the project and its features.
+![screenshot](./app_screenshot.png)
+
+In this app users can sign up, login, create foods, recipes and recipe_foods associations
 
 ## Built With
 
-- Ruby On Rails
-- Rubocop
-- Gemfile
+- Ruby
+- Ruby on Rails
+- HTML&CSS
+- VScode
+- Git and GitHub
 
 ## Getting Started
 
 To get a local copy up and running follow these simple example steps.
 
-### Clone the repo
-  `https://github.com/eri8-9/recipe_app.git`
+### Prerequisites
 
-### Run db's
-  `rails db:create` and `rails db:migrate`
+- Ruby
+- Command Line
+- Github account
+### Setup
 
-### Install gem files
-  `bundle install`
+- First open the command line, go to the directory you want this repository to be cloned into then do the following command:
 
-### Run server
-  `rails server`
+`git clone https://github.com/eri8-9/recipe_app.git`
+### Install
+
+- Run `bundle install`
+- Create a `.env` file to store your PSQL username and password. Check `database.yml`.
+- Run `rails db:create`
+- Run `rails db:migrate`
+### Usage
+
+- Run `rails server`
+- Open the your host (it will be shown in the console)
+### Run tests
+
+- Run `bundle exec rspec` or `rails rspec
 
 ### Authors
 

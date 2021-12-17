@@ -1,50 +1,56 @@
-// Place all the styles related to the food controller here.
+// Place all the styles related to the Foods controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-body {
-  padding: 2rem 5rem;
-}
+$main_color: #ff7f50;
 
-#food {
+@mixin flex_center {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
 }
 
-.btn-container {
-  align-self: flex-end;
-  margin-bottom: 40px;
+.food-show {
+  @include flex_center;
+}
 
-  form {
-    input {
-      font-size: 18px;
-      font-weight: 600;
-    }
+.food-index {
+  @include flex_center;
+
+  .table-headers {
+    text-align: left;
+  }
+
+  .food-row {
+    height: 4rem;
+    margin-top: 5rem;
+  }
+
+  .food-size {
+    font-size: 1.2rem;
+  }
+
+  .link-to {
+    margin: 1rem;
+    padding: 1rem 2rem;
+    background-color: transparent;
+    border: 2px solid rgba(204, 204, 204, 0.459);
+    border-radius: 20px;
+  }
+
+  .link-to:visited {
+    color: $main_color;
+  }
+
+  .link-to:hover {
+    color: white;
   }
 }
 
-.food-list {
-  border: 2px solid black;
-  border-spacing: 0;
-  border-collapse: collapse;
+.food-new {
+  @include flex_center;
+}
 
-  tr {
-    th {
-      border-left: 2px solid black;
-      border-right: 2px solid black;
-      padding-right: 20px;
-      font-size: 28px;
-      background-color: #ccc;
-    }
-
-    td {
-      border-left: 2px solid black;
-      border-right: 2px solid black;
-      padding: 5px;
-      background-color: rgb(238, 238, 238);
-      font-size: 22px;
-      font-weight: 600;
-    }
-  }
+.food-form {
+  @include flex_center;
 }

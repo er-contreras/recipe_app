@@ -1,4 +1,4 @@
-#PostgreSQL. Versions 9.3 and up are supported.
+# PostgreSQL. Versions 9.3 and up are supported.
 #
 # Install the pg driver:
 #   gem install pg
@@ -29,17 +29,19 @@ development:
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user running Rails.
-  username: <%= ENV['MY_NAME'] %>
-  password: <%= ENV['MY_PASSWORD'] %>
+  #username: recipe_app
+
+  # The password associated with the postgres role (username).
+  #password:
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
   # domain sockets, so uncomment these lines.
-  # host: 192.168.100.6
+  #host: localhost
 
   # The TCP port the server listens on. Defaults to 5432.
   # If your server runs on a different port number, change accordingly.
-  # port: 5432
+  #port: 5432
 
   # Schema search path. The server defaults to $user,public
   #schema_search_path: myapp,sharedapp,public
@@ -56,9 +58,6 @@ development:
 test:
   <<: *default
   database: recipe_app_test
-  username: <%= ENV['MY_NAME'] %>
-  password: <%= ENV['MY_PASSWORD'] %>
-  host: 192.168.100.6
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -82,6 +81,6 @@ test:
 #
 production:
   <<: *default
-  database: recipe_app
+  database: recipe_app_production
   username: recipe_app
   password: <%= ENV['RECIPE_APP_DATABASE_PASSWORD'] %>

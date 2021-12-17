@@ -1,5 +1,9 @@
 class RecipeFood < ApplicationRecord
-  belongs_to :food
   belongs_to :recipe
-  validates :quantity, presence: true, numericality: { only_integer: false }
+  belongs_to :food
+
+  def price
+    food = Food.find(food_id)
+    quantity * food.price
+  end
 end

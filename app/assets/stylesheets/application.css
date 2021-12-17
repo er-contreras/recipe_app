@@ -13,3 +13,39 @@
  *= require_tree .
  *= require_self
  */
+
+.major_div {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  color: black;
+  background-color: white;
+}
+
+a:visited {
+  color: black;
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10rem;
+}
+
+.table {
+  max-height: 100px;
+  overflow-y: auto;
+}

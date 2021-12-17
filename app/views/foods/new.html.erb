@@ -1,17 +1,7 @@
-<div>
-  <%= form_with model: @food do |form| %>
-    <div class="field">
-      <%= form.label :name %><br />
-      <%= form.text_field :name %>
-    </div>
-    <div class="field">
-      <%= form.label :measurement_unit %><br />
-      <%= form.text_field :measurement_unit, placeholder: 'Kilogram (kg)' %>
-    </div>
-    <div class="field">
-      <%= form.label :price %><br />
-      <%= form.text_field :price %>
-    </div>
-    <%= form.submit %>
-  <% end %>
-</div>
+<section class="food-new">
+  <h1>New Food</h1>
+
+  <%= render 'form', food: @food %>
+
+  <%= link_to 'Back', foods_path %>
+</section>

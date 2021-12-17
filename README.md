@@ -1,24 +1,58 @@
-# README
+![](https://img.shields.io/badge/Microverse-blueviolet)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Recipe App
 
-Things you may want to cover:
+> This projects was built with ruby
 
-* Ruby version
+Additional description about the project and its features.
 
-* System dependencies
+## Built With
 
-* Configuration
+- Ruby On Rails
+- Rubocop
+- Gemfile
 
-* Database creation
+## Getting Started
 
-* Database initialization
+To get a local copy up and running follow these simple example steps.
 
-* How to run the test suite
+### Clone the repo
+  `https://github.com/eri8-9/recipe_app.git`
 
-* Services (job queues, cache servers, search engines, etc.)
+### Run db's
+  `rails db:create` and `rails db:migrate`
 
-* Deployment instructions
+### Install gem files
+  `bundle install`
 
-* ...
+### Run server
+  `rails server`
+
+### Authors
+
+👤 **Christian Erick Contreras**
+
+- GitHub: [@eri8-9](https://github.com/eri8-9)
+- Linkedin: [LinkedIn](https://www.linkedin.com/in/christian-erick/)
+- Twitter: [@ChristianErick_](https://twitter.com/ChristianErick_)
+
+👤 **Tiago Rahal Aires**
+
+- GitHub: [@tiagorahal](https://github.com/tiagorahal)
+- Twitter: [@RahalAires](https://twitter.com/RahalAires)
+- LinkedIn: [Tiago Rahal Aires](https://linkedin.com/tiagorahal)
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!
+
+Feel free to check the [issues page](../../issues/).
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+## Acknowledgments
+
+- Microverse
+

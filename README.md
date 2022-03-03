@@ -4,8 +4,6 @@
 
 > A website about food recipes.
 
-![screenshot](./app_screenshot.png)
-
 In this app users can sign up, login, create foods, recipes and recipe_foods associations
 
 ## Built With
